@@ -4,12 +4,18 @@
 
 # Features
 
+## Help
+
+~~~bash
+java -jar balamuvideotool.jar -h
+~~~
+
 ## Ability compare the PSNR of frames in YUV format.   
    
 Example usage
 
 ~~~bash
-java -jar blamuvideotool.jar -if reference_image1.yuv -if2 reference_image2.yuv -psnr -w 1920 -h 1080 -f number_of_frames
+java -jar balamuvideotool.jar -if reference_image1.yuv -if2 reference_image2.yuv -psnr -w 1920 -h 1080 -f number_of_frames
 
 #sample output
 
@@ -37,7 +43,7 @@ This will create a split yuv frame of the two different YUV files. This will hel
 Example command
 
 ~~~bash
-java -jar blamuvideotool.jar -if reference_image1.yuv -if2 reference_image2.yuv -ss -w 1920 -h 1080 -f number_of_frames -o new_yuv_file.yuv
+java -jar balamuvideotool.jar -if reference_image1.yuv -if2 reference_image2.yuv -ss -w 1920 -h 1080 -f number_of_frames -o new_yuv_file.yuv
 ~~~
 
 ## Ability to extract certain frame of the YUV file
@@ -47,7 +53,7 @@ This help to extract certain frame from the YUV file.
 Example command
 
 ~~~bash
-java -jar blamuvideotool.jar -if reference_image1.yuv -if2 reference_image2.yuv -image -w 1920 -h 1080 -f number_of_frames -o file_name
+java -jar balamuvideotool.jar -if reference_image1.yuv -if2 reference_image2.yuv -image -w 1920 -h 1080 -f number_of_frames -o file_name
 ~~~
 
 ## Ability to offset the frames
@@ -58,5 +64,5 @@ Ability to offset certain frames from the yuv file
 Example command
 
 ~~~bash
-java -jar blamuvideotool.jar -if reference_image1.yuv -if2 reference_image2.yuv -psnr -w 1920 -h 1080 -f number_of_frames -offset 100
+java -jar balamuvideotool.jar -if reference_image1.yuv -if2 reference_image2.yuv -psnr -w 1920 -h 1080 -f number_of_frames -offset 100
 ~~~
