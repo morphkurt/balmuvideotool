@@ -1,0 +1,4 @@
+#!/bin/bash
+JAVA_BIN=
+$JAVA_BIN/java -jar balamuvideotool $@
+
