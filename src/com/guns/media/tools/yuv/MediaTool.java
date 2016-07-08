@@ -97,11 +97,11 @@ public class MediaTool {
 
                 }
                 executor.shutdown();
-                end_ms = System.currentTimeMillis() / 1000L;
+                end_ms = System.currentTimeMillis() ;
 
-                System.out.println("Frame Rate :" + frames / ((end_ms - start_ms)));
+                System.out.println("Frame Rate :" + frames * 1000 / ((end_ms - start_ms)));
                 for (int i = 0; i < frames; i++) {
-                    System.out.println("frame: " + i + " PSNR: " + 10 * Math.log10((255 * 255) / (DataStorage.getFrame(i) / (width * height))));
+                    System.out.println(i + "," + 10 * Math.log10((255 * 255) / (DataStorage.getFrame(i) / (width * height))));
 
                 }
             }
