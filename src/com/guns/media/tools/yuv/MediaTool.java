@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.guns.media.tools.yuv;
 
 import java.io.BufferedInputStream;
@@ -50,7 +49,6 @@ public class MediaTool {
             int offset = 0;
             CommandLineParser parser = new GnuParser();
             cmd = parser.parse(options, args);
-            int frame = new Integer(cmd.getOptionValue("f"));
 
             if (cmd.hasOption("help")) {
                 printHelp(options);
@@ -60,7 +58,7 @@ public class MediaTool {
             if (cmd.hasOption("offset")) {
                 offset = new Integer(cmd.getOptionValue("offset"));
             }
-            
+            int frame = new Integer(cmd.getOptionValue("f"));
 
             //  int scale = new Integer(args[2]);
             BufferedInputStream if1 = new BufferedInputStream(new FileInputStream(cmd.getOptionValue("if1")));
@@ -83,8 +81,8 @@ public class MediaTool {
 
             if (offset > 0) {
                 if1.skip(((width * height + ((width * height) / 2)) * offset));
-            } else if(offset < 0){
-                if2.skip(((width * height + ((width * height) / 2)) * (-1*offset)));
+            } else if (offset < 0) {
+                if2.skip(((width * height + ((width * height) / 2)) * (-1 * offset)));
             }
 
             if (cmd.hasOption("psnr")) {
@@ -130,17 +128,12 @@ public class MediaTool {
                 raf.close();
             }
             if (cmd.hasOption("ss") && !cmd.getOptionValue("o").matches("-")) {
-                
-                
 
                 RandomAccessFile raf = new RandomAccessFile(cmd.getOptionValue("o"), "rw");
-                
-               
 
                // RandomAccessFile ra =  new RandomAccessFile(cmd.getOptionValue("o"), "rw");
-
-               // MappedByteBuffer raf = new RandomAccessFile(cmd.getOptionValue("o"), "rw").getChannel().map(FileChannel.MapMode.READ_WRITE, 0, ((width*height)+(width*height/2))*frame);
-                   ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
+                // MappedByteBuffer raf = new RandomAccessFile(cmd.getOptionValue("o"), "rw").getChannel().map(FileChannel.MapMode.READ_WRITE, 0, ((width*height)+(width*height/2))*frame);
+                ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
                 while ((nRead = if1.read(data)) != -1 && ((fRead = if2.read(data1)) != -1) && frames < frame) {
                     byte[] data_out = data.clone();
                     byte[] data1_out = data1.clone();
@@ -148,31 +141,26 @@ public class MediaTool {
                     SidebySideImageThread wt = new SidebySideImageThread(data_out, data1_out, frames, width, height, raf);
                     // MPSidebySideImageThread wt = new MPSidebySideImageThread(data_out, data1_out, frames, width, height, ra);
                     frames++;
-                   // wt.run();
+                    // wt.run();
 
                     executor.execute(wt);
                 }
                 executor.shutdown();
                 end_ms = System.currentTimeMillis() / 1000L;
-               
-                while(!executor.isTerminated()){
-                    
+
+                while (!executor.isTerminated()) {
+
                 }
-               
+
                 raf.close();
             }
             if (cmd.hasOption("ss") && cmd.getOptionValue("o").matches("-")) {
-                
-                
 
-              
-                
                 PrintStream stdout = new PrintStream(System.out);
 
                // RandomAccessFile ra =  new RandomAccessFile(cmd.getOptionValue("o"), "rw");
-
                // MappedByteBuffer raf = new RandomAccessFile(cmd.getOptionValue("o"), "rw").getChannel().map(FileChannel.MapMode.READ_WRITE, 0, ((width*height)+(width*height/2))*frame);
-                  // ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
+                // ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newCachedThreadPool();
                 while ((nRead = if1.read(data)) != -1 && ((fRead = if2.read(data1)) != -1) && frames < frame) {
                     byte[] data_out = data.clone();
                     byte[] data1_out = data1.clone();
@@ -180,15 +168,14 @@ public class MediaTool {
                     SidebySideImageThread wt = new SidebySideImageThread(data_out, data1_out, frames, width, height, stdout);
                     // MPSidebySideImageThread wt = new MPSidebySideImageThread(data_out, data1_out, frames, width, height, ra);
                     frames++;
-                   // wt.run();
+                    // wt.run();
 
                     wt.run();
                 }
-              
+
                 end_ms = System.currentTimeMillis() / 1000L;
                 System.out.println("Frame Rate :" + frames / ((end_ms - start_ms)));
-               
-               
+
                 stdout.close();
             }
             if (cmd.hasOption("image")) {
@@ -240,7 +227,7 @@ public class MediaTool {
         options.addOption("pfmt", true, "Pixel Format");
         options.addOption("f", true, "Number of Frames");
         options.addOption("offset", true, "Offset Frame (This is the offset for the second input file");
-     //   options.addOption("reverse", true, "Offset Frame (This is the offset for the second input file");
+        //   options.addOption("reverse", true, "Offset Frame (This is the offset for the second input file");
         //    options.addOption("overide", true, "overide channel specific configurationx");
         return options;
     }
