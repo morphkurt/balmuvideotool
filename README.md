@@ -49,3 +49,14 @@ Example command
 ~~~bash
 java -jar blamuvideotool.jar -if reference_image1.yuv -if2 reference_image2.yuv -image -w 1920 -h 1080 -f number_of_frames -o file_name
 ~~~
+
+## Ability to offset the frames'
+
+Ability to offset certain frames from the yuv file
+
+
+Example command
+
+~~~bash
+java -jar blamuvideotool.jar -if reference_image1.yuv -if2 reference_image2.yuv -psnr -w 1920 -h 1080 -f number_of_frames -offset 100
+~~~
