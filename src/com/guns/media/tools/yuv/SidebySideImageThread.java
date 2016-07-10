@@ -62,9 +62,9 @@ public class SidebySideImageThread implements Runnable {
         byte[] out = new byte[s1.length];
         for (int k = 0; k < w * h; k++) {
 
-            int pixelValue_2 = s1[k] & 0xFF;
+            int pixelValue_2 = s2[k] & 0xFF;
 
-            int pixelValue_1 = s2[k] & 0xFF;
+            int pixelValue_1 = s1[k] & 0xFF;
 
             out[k] = (byte) pixelValue_1;
 
@@ -79,9 +79,9 @@ public class SidebySideImageThread implements Runnable {
 
         for (int k = w * h; k < (w * h) + (w * h / 4); k++) {
 
-            int pixelValue_2 = s1[k] & 0xFF;
+            int pixelValue_2 = s2[k] & 0xFF;
 
-            int pixelValue_1 = s2[k] & 0xFF;
+            int pixelValue_1 = s1[k] & 0xFF;
 
             out[k] = (byte) pixelValue_1;
 
@@ -94,9 +94,9 @@ public class SidebySideImageThread implements Runnable {
 
         for (int k = (w * h) + (w * h / 4); k < (w * h) + (w * h / 2); k++) {
 
-            int pixelValue_2 = s1[k] & 0xFF;
+            int pixelValue_2 = s2[k] & 0xFF;
 
-            int pixelValue_1 = s2[k] & 0xFF;
+            int pixelValue_1 = s1[k] & 0xFF;
 
             out[k] = (byte) pixelValue_1;
 
