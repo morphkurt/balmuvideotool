@@ -69,7 +69,7 @@ public class SidebySideImageThread implements Runnable {
             out[k] = (byte) pixelValue_1;
 
             if ((k % w) > (w / 2)) {
-                out[k] = (byte) (s1[(k / w) * w + (k % (w / 2))] & 0xFF);
+                out[k] = (byte) (s2[(k / w) * w + (k % (w / 2))] & 0xFF);
             }
 
             //  total = total+square(frame2[i][j] - frame1[i][j]);
@@ -86,7 +86,7 @@ public class SidebySideImageThread implements Runnable {
             out[k] = (byte) pixelValue_1;
 
             if ((k % c_w) > (c_w / 2)) {
-                out[k] = (byte) (s1[(k / c_w) * c_w + (k % (c_w / 2))] & 0xFF);
+                out[k] = (byte) (s2[(k / c_w) * c_w + (k % (c_w / 2))] & 0xFF);
             }
 
             //  total = total+square(frame2[i][j] - frame1[i][j]);
@@ -101,7 +101,7 @@ public class SidebySideImageThread implements Runnable {
             out[k] = (byte) pixelValue_1;
 
             if ((k % c_w) > (c_w / 2)) {
-                out[k] = (byte) (s1[(k / c_w) * c_w + (k % (c_w / 2))] & 0xFF);
+                out[k] = (byte) (s2[(k / c_w) * c_w + (k % (c_w / 2))] & 0xFF);
             }
 
             //  total = total+square(frame2[i][j] - frame1[i][j]);
